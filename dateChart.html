@@ -1,0 +1,64 @@
+<!DOCTYPE html><html><head>
+    <title>Zeit bis zum 06.05.2024</title>
+</head>
+<body onload="updateChart()">
+    <canvas id="chart"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script>
+		Chart.register(ChartDataLabels);
+        function updateChart() {
+            const now = new Date();
+            const start = new Date("2024-01-01");
+            const end = new Date("2024-05-06");
+            const elapsed = now - start;
+            const remaining = end - now;
+            const total = end - start;
+            const elapsedDays = Math.floor(elapsed  / (1000 * 60 * 60 * 24))
+            const remainingDays = Math.floor(remaining  / (1000 * 60 * 60 * 24))
+            const totalDays = Math.floor(total  / (1000 * 60 * 60 * 24))
+            const data = {
+                datasets: [{
+                    data: [remainingDays, elapsedDays],
+                    backgroundColor: [
+                        'rgba(47, 159, 202, 1)',
+                        'rgba(239, 133, 45, 1)'
+                    ],
+					  datalabels: {
+							labels: {
+							  title: "s"
+							}
+						  },
+                    borderColor: [
+                        'rgba(255, 255, 255, 1)',
+                        'rgba(255, 255, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }],
+                labels: [
+                    remainingDays+' Tage bis 06.05.2024',
+                    elapsedDays+' Tage seit 01.01.2024',
+                ]
+            };
+            const options = {
+                responsive: true,
+                maintainAspectRatio: false,
+				plugins: {
+				  datalabels: {
+					formatter: function(value, context) {
+					  return value + " ("+ Math.ceil( value/totalDays*100 ) + "%)";
+					}
+				  }
+				}
+            };
+            const ctx = document.getElementById('chart').getContext('2d');
+            const chart = new Chart(ctx, {
+                type: 'doughnut',
+                data: data,
+                options: options,
+			    plugins: [ChartDataLabels]
+            });
+        }
+    </script>
+
+</body></html>
