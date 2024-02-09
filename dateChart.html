@@ -10,7 +10,7 @@
         function updateChart() {
             const now = new Date();
             const start = new Date("2024-01-01");
-            const end = new Date("2024-05-06");
+            const end = new Date("2024-06-07");
             const elapsed = now - start;
             const remaining = end - now;
             const total = end - start;
@@ -36,13 +36,11 @@
                     borderWidth: 1
                 }],
                 labels: [
-                    remainingDays+' Tage bis 06.05.2024',
-                    elapsedDays+' Tage seit 01.01.2024',
+                    elapsedDays+' Tage seit ' + start.toLocaleDateString("de-DE"),
+                    remainingDays+' Tage bis ' + end.toLocaleDateString("de-DE"),
                 ]
             };
             const options = {
-                responsive: true,
-                maintainAspectRatio: false,
 				plugins: {
 				  datalabels: {
 					formatter: function(value, context) {
