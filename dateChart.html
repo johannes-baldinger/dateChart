@@ -25,9 +25,6 @@
                         '#EF852D'
                     ],
 					  datalabels: {
-							labels: {
-							  title: "s"
-							},
                             color: '#000000'
 						  },
                     borderColor: [
@@ -53,6 +50,7 @@
 				}
             };
             const ctx = document.getElementById('chart').getContext('2d');
+            Chart.defaults.font.family  = "'Segoe UI', 'Helvetica Neue', Helvetica, Arial, Verdana"
             const chart = new Chart(ctx, {
                 type: 'doughnut',
                 data: data,
