@@ -21,19 +21,20 @@
                 datasets: [{
                     data: [remainingDays, elapsedDays],
                     backgroundColor: [
-                        'rgba(47, 159, 202, 1)',
-                        'rgba(239, 133, 45, 1)'
+                        '#2F9FCA',
+                        '#EF852D'
                     ],
 					  datalabels: {
 							labels: {
 							  title: "s"
-							}
+							},
+                            color: '#000000'
 						  },
                     borderColor: [
-                        'rgba(255, 255, 255, 1)',
-                        'rgba(255, 255, 255, 1)'
+                        '#FFFFFF',
+                        '#FFFFFF',
                     ],
-                    borderWidth: 1
+                    borderWidth: 2
                 }],
                 labels: [
                     elapsedDays+' Tage seit ' + start.toLocaleDateString("de-DE"),
