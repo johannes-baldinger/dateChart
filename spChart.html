@@ -1,0 +1,73 @@
+<!DOCTYPE html><html><head>
+    <title>SP Chart</title>
+</head>
+<body onload="initChart()">
+
+    Done:<input type="number" onchange="done=parseInt(this.value);updateChart();"/>
+    NEW:<input type="number" onchange="newH=parseInt(this.value);updateChart();"/>
+    DEV Open:<input type="number" onchange="devOpen=parseInt(this.value);updateChart();"/>
+    DEV Closed:<input type="number" onchange="devClose=parseInt(this.value);updateChart();"/>
+    <br>
+    <canvas id="chart"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+    <script>
+        Chart.defaults.font.family  = "'Segoe UI', 'Helvetica Neue', Helvetica, Arial, Verdana"
+		Chart.register(ChartDataLabels);
+        let done = 718;
+        let newH = 2106+869;
+        let devClose = 692;
+        let devOpen = 1624- devClose;
+        let chart = 1;
+        let total = 100;
+        function total2(){return total;}
+        function updateChart() {
+            total = done+newH+devClose+devOpen;
+            chart.data.datasets[0] ={
+                    data: [done, newH, devOpen, devClose],
+                    backgroundColor: [
+                        '#EF852D', // orange    
+                        '#2F9FCA', // blau
+                        '#409A4B', //grün
+                        '#aF1155', // weinrot
+                    ],
+					  datalabels: {
+                            color: '#000000'
+						  },
+                    borderColor: [
+                        '#FFFFFF'
+                    ],
+                    borderWidth: 2
+                };
+                chart.update();
+        }
+        function initChart() {
+            
+            const options = {
+                  responsive: true,
+                // maintainAspectRatio: false,
+				plugins: {
+				  datalabels: {
+					formatter: function(value, context) {
+					  return value + " ("+ Math.ceil( value/total2()*100 ) + "%)";
+					}
+				  },
+                  legend: {
+                    position: "bottom"
+                  }
+				}
+            };
+            const ctx = document.getElementById('chart').getContext('2d');
+            chart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                        datasets: [{}]
+                    },
+                options: options,
+			    plugins: [ChartDataLabels]
+            });
+            updateChart();
+        }
+    </script>
+
+</body></html>

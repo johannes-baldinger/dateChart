@@ -46,7 +46,10 @@
 					formatter: function(value, context) {
 					  return value + " ("+ Math.ceil( value/totalDays*100 ) + "%)";
 					}
-				  }
+				  },
+                  legend: {
+                    position: "bottom"
+                  }
 				}
             };
             const ctx = document.getElementById('chart').getContext('2d');
