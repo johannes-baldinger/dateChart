@@ -42,7 +42,14 @@
                 chart.update();
         }
         function initChart() {
-            
+            const data = {
+                datasets: [{}],
+                labels: [
+                    "Done",
+                    "New",
+                    "DEV Open",
+                    "Dev Closed",
+                ]};
             const options = {
                   responsive: true,
                 // maintainAspectRatio: false,
@@ -60,9 +67,7 @@
             const ctx = document.getElementById('chart').getContext('2d');
             chart = new Chart(ctx, {
                 type: 'doughnut',
-                data: {
-                        datasets: [{}]
-                    },
+                data: data,
                 options: options,
 			    plugins: [ChartDataLabels]
             });
