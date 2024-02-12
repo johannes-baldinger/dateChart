@@ -3,11 +3,11 @@
 </head>
 <body onload="initChart()">
 
-    Done:<input type="number" onchange="done=parseInt(this.value);updateChart();"/>
-    NEW:<input type="number" onchange="newH=parseInt(this.value);updateChart();"/>
-    DEV Open:<input type="number" onchange="devOpen=parseInt(this.value);updateChart();"/>
-    DEV Closed:<input type="number" onchange="devClose=parseInt(this.value);updateChart();"/>
-    <br>
+    Done:<input type="number" onchange="done=parseInt(this.value);updateChart();"/><br>
+    NEW:<input type="number" onchange="newH=parseInt(this.value);updateChart();"/><br>
+    DEV Open:<input type="number" onchange="devOpen=parseInt(this.value);updateChart();"/><br>
+    DEV Closed:<input type="number" onchange="devClose=parseInt(this.value);updateChart();"/><br>
+    
     <canvas id="chart"></canvas>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
