@@ -1,8 +1,10 @@
 <!DOCTYPE html><html><head>
-    <title>Zeit bis zum 06.05.2024</title>
+    <title>Zeit bis zum 07.06.2024</title>
 </head>
 <body onload="updateChart()">
-    <h2 style="font-family:'Segoe UI', 'Helvetica Neue', Helvetica, Arial, Verdana;    font-size: 1rem;    font-weight: normal;">Tage Phase 1</h2>
+    <h2 style="font-family:'Segoe UI', 'Helvetica Neue', Helvetica, Arial, Verdana;    font-size: 1rem;    font-weight: normal;">
+        Tage Phase 1 (01.01.-07.06.)
+    </h2>
     <canvas id="chart"></canvas>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
@@ -20,10 +22,10 @@
             const totalDays = Math.floor(total  / (1000 * 60 * 60 * 24))
             const data = {
                 datasets: [{
-                    data: [remainingDays, elapsedDays],
+                    data: [elapsedDays,remainingDays],
                     backgroundColor: [
-                        '#2F9FCA',
-                        '#EF852D'
+                        '#EF852D',
+                        '#2F9FCA'
                     ],
 					  datalabels: {
                             color: '#000000'
